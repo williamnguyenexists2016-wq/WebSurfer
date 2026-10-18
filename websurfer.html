@@ -1,0 +1,305 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d18">
+    <meta name="description" content="A new AI browser is coming. Follow our YouTube channel for updates.">
+
+    <title>Web Surfer — New AI Browser Coming</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #080d18;
+            --blue: #55baff;
+            --text: #f4f8ff;
+            --muted: #a5b5cb;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Segoe UI", Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Animated background */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    ellipse at 50% 0%,
+                    #173e66 0%,
+                    transparent 60%
+                ),
+                linear-gradient(145deg, #080d18, #101827, #07121f);
+        }
+
+        .orb {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: #148de5;
+            filter: blur(120px);
+            opacity: 0.12;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .orb.one {
+            top: -150px;
+            left: -100px;
+        }
+
+        .orb.two {
+            right: -120px;
+            bottom: -150px;
+            background: #00d4ff;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(60px, 40px);
+            }
+        }
+
+        /* Main content */
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+            animation: appear 0.9s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #55baff55;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #193b5a, #102337);
+            box-shadow: 0 0 45px #249dff20;
+            font-size: 42px;
+        }
+
+        .brand {
+            font-size: clamp(38px, 7vw, 62px);
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .brand span {
+            color: var(--blue);
+        }
+
+        .status {
+            display: inline-block;
+            margin: 30px 0 20px;
+            padding: 9px 17px;
+            border: 1px solid #55baff55;
+            border-radius: 999px;
+            background: #17344e80;
+            color: #8ed3ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: clamp(28px, 5vw, 45px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .description {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .divider {
+            width: 72px;
+            height: 3px;
+            margin: 30px auto;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #42a5ff, #77e0ff);
+        }
+
+        /* YouTube button */
+
+        .youtube-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            margin-top: 26px;
+            padding: 15px 25px;
+            border: 1px solid #ff777755;
+            border-radius: 12px;
+            background: #e62117;
+            color: white;
+            font-size: 15px;
+            font-weight: 750;
+            text-decoration: none;
+            box-shadow: 0 8px 30px #e6211720;
+            transition:
+                background 0.2s,
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .youtube-button:hover {
+            background: #c91b12;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px #e6211735;
+        }
+
+        .youtube-icon {
+            width: 22px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: white;
+            color: #e62117;
+            font-size: 11px;
+        }
+
+        .channel {
+            display: block;
+            margin-top: 14px;
+            color: #8297b0;
+            font-size: 13px;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .channel:hover {
+            color: var(--blue);
+        }
+
+        footer {
+            margin-top: 58px;
+            color: #63758c;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 70px;
+                height: 70px;
+                font-size: 36px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .youtube-button {
+                width: 100%;
+                max-width: 310px;
+            }
+
+            footer {
+                margin-top: 42px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background" aria-hidden="true">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+    </div>
+
+    <main class="container">
+
+        <div class="logo" aria-hidden="true">🌊</div>
+
+        <h1 class="brand">
+            Web <span>Surfer</span>
+        </h1>
+
+        <div class="status">
+            COMING SOON
+        </div>
+
+        <h2>New AI Browser Coming</h2>
+
+        <p class="description">
+            A new browsing experience is on the horizon.<br>
+            Follow the YouTube channel for updates.
+        </p>
+
+        <a
+            class="youtube-button"
+            href="https://www.youtube.com/@brian_nguyen-m7p"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span class="youtube-icon" aria-hidden="true">▶</span>
+            Visit My YouTube Channel
+        </a>
+
+        <a
+            class="channel"
+            href="https://www.youtube.com/@brian_nguyen-m7p"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            youtube.com/@brian_nguyen-m7p
+        </a>
+
+        <div class="divider"></div>
+
+        <footer>
+            © 2026 Web Surfer. Something new is on the horizon.
+        </footer>
+
+    </main>
+</body>
+</html>
